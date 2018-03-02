@@ -8,9 +8,17 @@
 </head>
 
 <body>
-    <a-scene physics="iterations: 50; friction: 5000; restitution: 0">
+
+    <a-scene physics="iterations: 50; friction: 50000; restitution: 0; gravity: 0">
+
+        <a-assets>
+            <a-asset-item id="alien" src="/assets/alien/scene.gltf" dynamic-body></a-asset-item>
+        </a-assets>
+
         <a-box id="box" life position="0 4 0" color="#4CC3D9" dynamic-body aabb-collider="objects: #move">
         </a-box>
+
+        <a-entity gltf-model="#alien" position="0 10 0"></a-entity>
 
         <a-camera id="camera" position="0 0 0" user-height="0.8">
             <a-cursor></a-cursor>
@@ -28,7 +36,8 @@
         <a-sky color="#ECECEC"></a-sky>
     </a-scene>
 
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="test.js"></script>
 
 </body>
