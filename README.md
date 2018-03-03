@@ -11,7 +11,7 @@ npm start
 
 
 ## Existing Problems:
- - [ ] Attach Camera to Object
+ - [x] Attach Camera to Object (Manually update camera position at every tick)
  - [ ] Measure cursor angle [Potential Solution](https://stackoverflow.com/questions/42808895/finding-the-direction-in-which-the-camera-faces)
  - [ ] Avoid Object rotation in air
  - [ ] Scene reload() issue (Black Texture)
