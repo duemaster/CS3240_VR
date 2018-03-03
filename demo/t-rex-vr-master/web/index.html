@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>T-Rex VR</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+  </head>
+<body>
+  <a-scene id="scene">
+    <a-assets>
+      <img id="imgGround" src="https://ucarecdn.com/d86697ef-c9b9-4b74-912b-6e332adc80cd/"/>
+    </a-assets>
+    <a-cylinder position="0 0 0" radius="50" height="0.1" material="src:#imgGround; repeat: 20 20"></a-cylinder>
+    <a-entity>
+      <a-entity id="t-rex" obj-model="obj: assets/trex.obj" position="0 0 -40" scale="10 10 10"
+        material="color: black">
+        <a-animation id="t-rex-wobble"
+          attribute="rotation" dur="200" direction="alternate"
+          to="0 10 -10" repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-animation
+        attribute="rotation" dur="20000" direction="forward"
+        to="0 -360 0" repeat="indefinite"  easing="linear"></a-animation>
+    </a-entity>
+
+    <a-gradient-sky material="shader: gradient; topColor: 163 233 248; bottomColor: 230 191 140;"></a-gradient-sky>
+    <a-entity id="remote" tracked-controls="idPrefix: Daydream Controller" daydream-controls></a-entity>
+  </a-scene>
+  <template id="jumpAnimation">
+    <a-animation 
+      attribute="position" dur="200" from="0 18 -40" to="0 0 -40" easing="linear"
+      delay="1000"></a-animation>
+    <a-animation 
+      attribute="position" dur="200" to="0 18 -40" easing="linear"></a-animation>
+  </template>
+  <script src="t-rex.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
