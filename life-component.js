@@ -7,8 +7,6 @@ AFRAME.registerComponent('life', {
     },
     update: function() {},
     tick: function() {
-        // console.log(this.el);
-        // console.log("Ticking from life");
         var boxRef = this.el;
         if (boxRef.getAttribute("position").y < 0) {
             console.log("Died!");
