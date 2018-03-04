@@ -19,7 +19,7 @@ AFRAME.registerComponent('gravity', {
 
         //Get apply force on player
         let player = document.getElementById("box");
-        let gravForce = 9.81 / Math.pow(distance, 2);
+        let gravForce = 1 / Math.pow(distance, 2);
         try {
             player.body.applyImpulse(
                 /* impulse */
