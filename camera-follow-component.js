@@ -1,7 +1,7 @@
 AFRAME.registerComponent('camera-follow', {
     schema: {},
     init: function() {
-        console.log("Set up!");
+        console.log("Camera Follow Component");
     },
     update: function() {},
     tick: function() {

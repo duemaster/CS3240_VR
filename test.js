@@ -1,16 +1,23 @@
 $('body').keyup((e) => {
     if (e.keyCode == 32) {
-        // var box = document.getElementById("box");
-        // console.log(box.getAttribute("position"));
+        let player = document.getElementById("box");
 
         //Get camera facing location
         let camera_direction = document.getElementById("camera").object3D.getWorldDirection();
 
-        let forceAmount = -40;
+        let forceAmount = -10;
 
-        box.body.applyImpulse(
+        // player.body.applyImpulse(
+        //     /* impulse */
+        //     new CANNON.Vec3(forceAmount * camera_direction.x, forceAmount * camera_direction.y, forceAmount * camera_direction.z),
+        //     /* world position */
+        //     // new CANNON.Vec3().copy(box.getAttribute("position"))
+        //     new CANNON.Vec3().copy({ x: 0, y: 0, z: 0 })
+        // );
+
+        player.body.applyImpulse(
             /* impulse */
-            new CANNON.Vec3(forceAmount * camera_direction.x, forceAmount * camera_direction.y, forceAmount * camera_direction.z),
+            new CANNON.Vec3(0, -100, 0),
             /* world position */
             // new CANNON.Vec3().copy(box.getAttribute("position"))
             new CANNON.Vec3().copy({ x: 0, y: 0, z: 0 })
