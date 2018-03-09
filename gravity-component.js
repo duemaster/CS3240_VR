@@ -12,14 +12,18 @@ AFRAME.registerComponent('gravity', {
 
         //Get vector from player to asteriod
         let gravVec = new THREE.Vector3();
-        gravVec.subVectors(asteriodCoord, gravVec).normalize();
+        gravVec.subVectors(asteriodCoord, playerCoord);
 
         //calculate distance
         let distance = asteriodCoord.distanceTo(playerCoord);
 
         //Get apply force on player
         let player = document.getElementById("box");
-        let gravForce = 1 / Math.pow(distance, 2);
+        let gravForce = 9.81 / Math.pow(distance, 2);
+
+        // console.log(playerCoord);
+        // console.log(asteriodCoord);
+        // console.log(gravVec);
         try {
             player.body.applyImpulse(
                 /* impulse */
