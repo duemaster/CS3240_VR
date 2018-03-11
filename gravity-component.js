@@ -1,7 +1,7 @@
 AFRAME.registerComponent('gravity', {
     schema: {
         mass: { type: 'int', default: 5 },
-        gravity_range: { type: 'int', default: 1000 }
+        range: { type: 'int', default: 10 }
     },
     init: function() {
         console.log("Gravity Component");
@@ -24,12 +24,12 @@ AFRAME.registerComponent('gravity', {
         //calculate distance
         let distance = asteriodCoord.distanceTo(playerCoord);
 
-        //Get apply force on player
-        let gravForce = 5 * asteriod.mass / Math.pow(distance, 2);
+        //Calculate apply force on player
+        let gravForce = (5 * this.data.mass) / Math.pow(distance, 2);
 
         try {
             //Apply no force if outside gravity range
-            if (distance > asteriod.gravity_range) {
+            if (distance > this.data.range) {
                 return;
             }
 
@@ -39,9 +39,7 @@ AFRAME.registerComponent('gravity', {
                 /* world position */
                 new CANNON.Vec3().copy({ x: 0, y: 0, z: 0 })
             );
-        } catch (e) {
-
-        }
+        } catch (e) {}
     },
     remove: function() {},
     pause: function() {},
