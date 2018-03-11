@@ -1,6 +1,6 @@
 AFRAME.registerComponent('gravity', {
     schema: {
-        mass: { type: 'int', default: 5 },
+        mass: { type: 'int', default: 1 },
         range: { type: 'int', default: 10 }
     },
     init: function() {

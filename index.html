@@ -7,11 +7,12 @@
     <script src="life-component.js"></script>
     <script src="gravity-component.js"></script>
     <script src="camera-follow-component.js"></script>
+    <script src="air-resistance-component.js"></script>
 </head>
 
 <body>
 
-    <a-scene physics="iterations: 50; friction: 50000; restitution: 0; gravity: 0">
+    <a-scene physics="iterations: 50; friction: 50000; restitution: 0; gravity: 0;">
         <a-assets>
             <a-asset-item id="alien" src="assets/alien/scene.gltf"></a-asset-item>
             <a-asset-item id="star" src="assets/mars/scene.gltf"></a-asset-item>
@@ -63,24 +64,7 @@
         </a-entity>
 
 
-
-        <a-entity gravity="mass:5; range:10" gltf-model="#star" position="0 10 0" scale="3 3 3" static-body="shape: sphere">
-            <!-- <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation> -->
-        </a-entity>
-
-        <a-entity gravity gltf-model="#star" position="5 50 15" scale="3 3 3" static-body="shape: sphere">
-            <!-- <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation> -->
-        </a-entity>
-
-        <a-entity gravity gltf-model="#star" position="15 30 25" scale="3 3 3" static-body="shape: sphere">
-            <!-- <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation> -->
-        </a-entity>
-
-        <a-entity gravity gltf-model="#star" position="5 40 25" scale="3 3 3" static-body="shape: sphere">
-            <!-- <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation> -->
-        </a-entity>
-
-        <a-entity gravity gltf-model="#star" position="0 -10 0" scale="3 3 3" static-body="shape: sphere">
+        <a-entity air-resistance gravity="range: 1000" gltf-model="#star" position="0 -10 0" scale="3 3 3" static-body="shape: sphere">
             <!-- <a-animation attribute="rotation" dur="10000" fill="forwards" to="0 360 0" repeat="indefinite"></a-animation> -->
         </a-entity>
 
