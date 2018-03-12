@@ -1,14 +1,21 @@
 AFRAME.registerComponent('gravity', {
-    schema: {},
+    schema: {
+        mass: { type: 'int', default: 1 },
+        range: { type: 'int', default: 10 }
+    },
     init: function() {
         console.log("Gravity Component");
     },
     update: function() {},
     tick: function() {
+
+        let asteriod = this.el;
+        let player = document.getElementById("box");
+
         //get coordinate of asteriod
-        let asteriodCoord = this.el.object3D.getWorldPosition();
+        let asteriodCoord = asteriod.object3D.getWorldPosition();
         //get coordinate of player
-        let playerCoord = document.getElementById("box").object3D.getWorldPosition();
+        let playerCoord = player.object3D.getWorldPosition();
 
         //Get vector from player to asteriod
         let gravVec = new THREE.Vector3();
@@ -17,23 +24,22 @@ AFRAME.registerComponent('gravity', {
         //calculate distance
         let distance = asteriodCoord.distanceTo(playerCoord);
 
-        //Get apply force on player
-        let player = document.getElementById("box");
-        let gravForce = 9.81 / Math.pow(distance, 2);
+        //Calculate apply force on player
+        let gravForce = (5 * this.data.mass) / Math.pow(distance, 2);
 
-        // console.log(playerCoord);
-        // console.log(asteriodCoord);
-        // console.log(gravVec);
         try {
+            //Apply no force if outside gravity range
+            if (distance > this.data.range) {
+                return;
+            }
+
             player.body.applyImpulse(
                 /* impulse */
                 new CANNON.Vec3(gravForce * gravVec.x, gravForce * gravVec.y, gravForce * gravVec.z),
                 /* world position */
                 new CANNON.Vec3().copy({ x: 0, y: 0, z: 0 })
             );
-        } catch (e) {
-
-        }
+        } catch (e) {}
     },
     remove: function() {},
     pause: function() {},
