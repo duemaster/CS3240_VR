@@ -10,11 +10,9 @@ var jumpInDirection = function() {
         /* impulse */
         new CANNON.Vec3(forceAmount * camera_direction.x, forceAmount * camera_direction.y, forceAmount * camera_direction.z),
         /* world position */
-        // new CANNON.Vec3().copy(box.getAttribute("position"))
         new CANNON.Vec3().copy({ x: 0, y: 0, z: 0 })
     );
 }
-
 
 $('body').keyup((e) => {
     if (e.keyCode == 32) {

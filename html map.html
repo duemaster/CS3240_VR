@@ -1,0 +1,141 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Hello, WebVR! - A-Frame</title>
+  <meta name="description" content="Hello, WebVR! - A-Frame" />
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CRoboto+Mono" media="all" />
+</head>
+
+<body data-gr-c-s-loaded="true" class="a-body vsc-initialized ">
+  <a-assets>
+    <a-asset-item id="tree-mlt" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2FSpaceShip.mtl?1520745311085"></a-asset-item>
+    <img id="neptune" crossorigin="anonymous" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173"
+    />
+    <img id="mars" crossorigin="anonymous" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fmarsmap1k.jpg?1520743094542"
+    />
+    <img id="saturn" crossorigin="anonymous" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fsaturnmap.jpg?1520743092589"
+    />
+    <img id="jupiter" crossorigin="anonymous" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fjupitermap.jpg?1520743092662"
+    />
+
+  </a-assets>
+
+  <a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+    <canvas class="a-canvas" data-aframe-canvas="true" width="300" height="150"></canvas>
+
+    <a-sphere position="-10.015 3.042 -3.628" radius="0.25" color="#EF2D5E" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173"
+      scale="15 15 15" material="" geometry="" id="planet"></a-sphere>
+    <a-sphere position="7.752 3.042 -5.969" radius="0.25" color="#EF2D5E" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173"
+      scale="10 10 10" id="planet"></a-sphere>
+    <a-sphere position="-6.073 1.844 8.742" radius="0.25" color="#EF2D5E" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173"
+      scale="5 5 5" id="planet"></a-sphere>
+    <a-sphere position="3.775 0.393 3.577" radius="0.25" color="#EF2D5E" src="https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173"
+      scale="5 5 5" id="planet"></a-sphere>
+    <a-sphere position="-1.809 1.25 13.197" radius="0.25" color="#EF2D5E" material="" geometry=""></a-sphere>
+    <a-sphere position="-0.469 1.25 12.008" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.862 1.872 12.008" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.312 1.872 9.134" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.82 0.681 12.396" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.644 0.681 9.555" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.812 2.881 9.555" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.566 2.025 9.555" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.26 1.726 11.653" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.684 1.726 8.657" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.001 1.726 6.007" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.915 2.232 6.007" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.604 2.232 -0.164" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.396 0.681 9.555" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.901 0.681 7.714" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.665 1.366 7.714" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.665 3.231 10.943" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.595 1.572 10.943" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.713 2.83 10.943" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.713 2.83 7.305" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.632 2.83 5.725" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.594 2.83 7.266" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.526 2.83 5.98" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.421 2.83 5.98" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.424 1.31 5.976" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.642 1.786 5.98" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.881 0.599 5.98" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.881 0.599 -0.141" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.535 0.599 -0.141" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.821 0.599 2.106" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-4.456 0.599 2.106" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-4.456 0.599 0.383" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.59 1.684 0.383" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.013 1.102 1.644" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-5.38 1.996 2.596" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-4.201 1.996 0.956" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.746 3.183 0.956" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.999 3.222 0.321" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.999 2.518 1.904" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-2.592 2.518 -0.827" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.947 1.586 -2.096" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.788 1.586 -0.872" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-4.592 1.586 -0.872" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-4.592 1.586 -3.382" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.158 2.097 -3.382" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.357 2.097 -2.697" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.45 1.892 -1.205" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.238 0.584 -4.028" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.074 2.803 -3.538" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.759 1.915 -3.538" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.81 3.299 -3.538" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.621 3.299 -2.328" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.621 2.603 -4.716" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.258 2.603 -3.751" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.609 2.156 -8.391" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.924 2.156 -10.071" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.114 2.156 -10.071" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="1.114 1.461 -7.668" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.608 1.952 -8.165" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.815 2.569 -9.553" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.408 2.569 -9.553" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.408 3.813 -8.232" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="0.601 3.831 -9.465" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-1.346 0.599 -2.7" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.038 0.599 -2.7" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="2.444 0.599 -2.7" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-3.922 0.599 -2.929" radius="0.25" color="#EF2D5E"></a-sphere>
+    <a-sphere position="-0.331 4.49 -17.705" radius="0.25" color="#EF2D5E" rotation="0.12 -90.47 0" scale="2 5 2"
+      material="color:#bb6262" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="UFO"></a-sphere>
+    <a-sphere position="-4.97 2.83 4.339" radius="0.25" color="#EF2D5E" rotation="0 180 90" scale="0.25 0.5 0.25"
+      material="color:#ffffff" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="Nasa Zone 1 Start"></a-sphere>
+    <a-sphere position="0.591 0.957 4.339" radius="0.25" color="#EF2D5E" rotation="0 180 90" scale="0.25 0.5 0.25"
+      material="color:#ffffff" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="Nasa Zone 1 End                 "></a-sphere>
+    <a-sphere position="-4.078 0.883 3.424" radius="0.25" color="#EF2D5E" rotation="0 0 90" scale="0.25 0.5 0.25"
+      material="color:#00ff00" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="2nd Nasa (Zone 1) Start 2                 -2"></a-sphere>
+    <a-sphere position="1.177 2.851 3.424" radius="0.25" color="#EF2D5E" rotation="0 0 90" scale="0.25 0.5 0.25"
+      material="color:#00ff00" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="2nd Nasa (Zone 1) end                 -2-2"></a-sphere>
+    <a-sphere position="1.616 3.167 -10.963" radius="0.25" color="#EF2D5E" rotation="0 0 90" scale="0.25 0.5 0.25"
+      material="color:#00ffff" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="Nasa (Zone 2) Start"></a-sphere>
+    <a-sphere position="-3.863 0.371 -11.735" radius="0.25" color="#EF2D5E" rotation="0 0 90" scale="0.25 0.5 0.25"
+      material="color:#00ffff" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="Nasa (Zone 2) Start-2"></a-sphere>
+    <a-sphere position="-3.989 4.659 -12.867" radius="0.25" color="#EF2D5E" rotation="0 180 90" scale="0.25 0.5 0.25"
+      material="color:#ffff00" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="2nd Nasa (Zone 2) Start<a-sphere position=&quot;0 1.25 -5&quot; radius=&quot;0.25&quot; color=&quot;#EF2D5E&quot; src=&quot;https://cdn.glitch.com/05ceb4ee-da2b-4f3d-b884-201c4032a43b%2Fneptunemap.jpg?1520743092173&quot;></a-sphere>"></a-sphere>
+    <a-sphere position="3.316 1.305 -12.867" radius="0.25" color="#EF2D5E" rotation="0 180 90" scale="0.25 0.5 0.25"
+      material="color:#ffff00" geometry="primitive:cone;segmentsHeight:5;thetaLength:180" id="2nd Nasa (Zone 2) end"></a-sphere>
+
+
+
+
+
+    <a-sky color="#ECECEC" visible="false" material="" geometry=""></a-sky>
+    <a-entity id="spectatorCameraRig" position="0 1.6 2">
+      <a-entity id="spectatorCamera" camera="active:false" position="2.3815390554425675 -2.6572843590704314 -19.241755237161655"
+        rotation="-5.729577951308237 5.844169510334394 0" look-controls="" wasd-controls="fly:true"></a-entity>
+    </a-entity>
+    <a-entity position="0 5.88 -13.97"></a-entity>
+  </a-scene>
+
+  <script src="https://unpkg.com/aframe-motion-capture-components@0.2.6/dist/aframe-motion-capture-components.min.js"></script>
+  <a href="blob:https://fresh-team.glitch.me/ee9be2e7-40d4-439d-afec-f04c2b5e04ee" download="fresh-team-glitch-me" style="display: none;"></a>
+  <a href="blob:https://fresh-team.glitch.me/e1351387-7267-459b-b2ff-75822ac9bd9d" download="fresh-team-glitch-me" style="display: none;"></a>
+  <a href="blob:https://fresh-team.glitch.me/1ba8ad36-26b9-4f3c-a253-438d581d5d57" download="fresh-team-glitch-me" style="display: none;"></a>
+  <a href="blob:https://fresh-team.glitch.me/549bd0f3-1f6c-4f01-a50f-58842bbaaad2" download="fresh-team-glitch-me" style="display: none;"></a>
+</body>
+
+</html>
