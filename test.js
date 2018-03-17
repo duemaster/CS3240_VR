@@ -34,6 +34,6 @@ $('body').keyup((e) => {
     }
 })
 
-// document.onclick = function(e) {
-//     jumpInDirection();
-// }
+    // document.onclick = function(e) {
+    //     jumpInDirection();
+    // }
