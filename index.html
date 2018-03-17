@@ -20,8 +20,8 @@
             <a-asset-item id="fighter_obj" src="assets/spaceship_2/SpaceShip.obj"></a-asset-item>
             <a-asset-item id="fighter_mat" src="assets/spaceship_2/SpaceShip.mtl"></a-asset-item>
 
-            <a-asset-item id="l_hand" src="assets/l_hand/scene.gltf"></a-asset-item>
-            <a-asset-item id="r_hand" src="assets/r_hand/scene.gltf"></a-asset-item>
+            <a-asset-item id="lhand" src="assets/l_hand/scene.gltf"></a-asset-item>
+            <a-asset-item id="rhand" src="assets/r_hand/scene.gltf"></a-asset-item>
             <img id="space" src="assets/space/space.jpg"></img>
         </a-assets>
 
@@ -32,8 +32,8 @@
 
         <a-camera id="camera" position="0 0 0" user-height="1">
             <a-cursor color="white"></a-cursor>
-            <a-entity gltf-model="#l_hand" position="-0.5 -0.6 -1" scale="50 50 50"></a-entity>
-            <a-entity gltf-model="#r_hand" position="0.5 -0.6 -1" scale="50 50 50"></a-entity>
+            <a-entity gltf-model="#lhand" position="-0.5 -0.6 -1" scale="100 100 100"></a-entity>
+            <a-entity gltf-model="#rhand" position="0.5 -0.6 -1" scale="100 100 100"></a-entity>
         </a-camera>
 
         <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="10 0 10" static-body="shape: box">
