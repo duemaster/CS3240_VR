@@ -25,7 +25,7 @@
             <img id="space" src="assets/space/space.jpg"></img>
         </a-assets>
 
-        <a-sky src="#space" material="" geometry=""></a-sky>
+        <a-sky src="#space"></a-sky>
 
         <a-box id="box" camera-follow="" position="-0.5 4.5 -5" material="transparent:true;opacity:0" dynamic-body="shape:box; mass:5" aabb-collider="objects:#move">
         </a-box>
@@ -48,7 +48,7 @@
         </a-entity> -->
 
 
-        <a-entity air-resistance gravity="range:1000" gltf-model="#star" position="0 0 0" scale="2 2 2" static-body="shape: sphere">
+        <a-entity air-resistance="resistance:100" gravity="range:1000" gltf-model="#star" position="0 0 0" scale="2 2 2" static-body="shape: sphere">
         </a-entity>
         
 
