@@ -25,22 +25,22 @@
             <img id="space" src="assets/space/space.jpg"></img>
         </a-assets>
 
-        <a-sky src="#space"></a-sky>
+        <a-sky src="#space" material="" geometry=""></a-sky>
 
-        <a-box id="box" camera-follow position="0 10 0" material="transparent: true; opacity: 0" dynamic-body="shape: box; mass: 5" aabb-collider="objects: #move">
+        <a-box id="box" camera-follow="" position="-0.625539901738849 4.400478671677936 -5.0145463596173885" material="transparent:true;opacity:0" dynamic-body="shape:box;sphereRadius:NaN" aabb-collider="objects:#move" rotation="-55.86688974651031 -156.5395149043014 11.296327534517381" geometry="" quaternion="0.1799114469488965 0.8514682362973645 0.43875774994372113 -0.2238869149765858" velocity="">
         </a-box>
 
-        <a-camera id="camera" position="0 0 0" user-height="1">
-            <a-cursor color="white"></a-cursor>
-            <a-entity gltf-model="#lhand" position="-0.5 -0.6 -1" scale="100 100 100"></a-entity>
-            <a-entity gltf-model="#rhand" position="0.5 -0.6 -1" scale="100 100 100"></a-entity>
+        <a-camera id="camera" position="-0.6249472238459133 4.400981832871845 -5.01721089482868" user-height="1" rotation="83.69746425356095 562.759146377494 0" camera="" look-controls="" wasd-controls="" data-aframe-inspector-original-camera="">
+            <a-cursor color="white" material="" raycaster="" cursor="" geometry=""></a-cursor>
+            <a-entity gltf-model="#lhand" position="-4.597 -13.237 -12.682" scale="10 10 10" rotation="-41.367552808445446 167.8193381938181 7.276563998161455"></a-entity>
+            <a-entity gltf-model="#rhand" position="6.104 -14.251 -2.639" scale="10 10 10" rotation="0 -154.2975342287307 0"></a-entity>
         </a-camera>
 
-        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="10 0 10" static-body="shape: box">
+        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="0.2687668441201989 20.2687668441202 0" static-body="shape: box;sphereRadius:NaN">
             <a-animation attribute="position" dur="5000" from="10 30 0" to="0 20 0" repeat="indefinite" direction="alternate">
             </a-animation>
         </a-entity>
-        <a-entity gltf-model="#rhand" position="10 -3 10" scale="100 100 100"></a-entity>
+        
 
         <!-- <a-entity gltf-model="#ufo" position="10 0 10" static-body="shape: box">
             <a-animation attribute="position" dur="5000" from="100 50 0" to="150 50 0" repeat="indefinite" direction="alternate">
@@ -48,7 +48,7 @@
         </a-entity> -->
 
 
-        <a-entity air-resistance gravity="range: 1000" gltf-model="#star" position="0 0 0" scale="3 3 3" static-body="shape: sphere">
+        <a-entity air-resistance gravity="range:1000" gltf-model="#star" position="0 0 0" scale="2 2 2" static-body="shape: sphere">
         </a-entity>
         
 
