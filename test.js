@@ -20,20 +20,20 @@ $('body').keyup((e) => {
     }
 })
 
-document.getElementById("box")
-    .addEventListener("hitend", () => {
-        console.log("collide");
-        // location.reload();
-    });
+// document.getElementById("box")
+//     .addEventListener("hitend", () => {
+//         console.log("collide");
+//         // location.reload();
+//     });
 
 
-$('body').keyup((e) => {
-    if (e.keyCode == 13) {
-        // document.querySelector('a-scene').reload();
-        location.reload();
-    }
-})
+// $('body').keyup((e) => {
+//     if (e.keyCode == 13) {
+//         // document.querySelector('a-scene').reload();
+//         location.reload();
+//     }
+// })
 
-    // document.onclick = function(e) {
-    //     jumpInDirection();
-    // }
+// document.onclick = function(e) {
+//     jumpInDirection();
+// }
