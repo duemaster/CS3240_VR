@@ -20,7 +20,6 @@ $('body').keyup((e) => {
     }
 })
 
-$('body').on("click", (e) => {
+$('body').on("touchstart", (e) => {
     jumpInDirection();
-    console.log("Click");
 })
