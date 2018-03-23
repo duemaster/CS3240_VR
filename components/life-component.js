@@ -1,20 +1,34 @@
 AFRAME.registerComponent('life', {
     schema: {
-        // objRef: { type: 'string', default: { test: 123 } }
     },
-    init: function() {
+    init: function () {
         console.log("Life Component");
+
+        this.el.addEventListener('collide', function (e) {
+            // console.log(`Player Collided with ${e.detail.body.el.className}`);
+            processCollision(e.detail.body.el.className);
+        })
     },
-    update: function() {},
-    tick: function() {
-        let boxRef = this.el;
-        if (boxRef.getAttribute("position").y < 0) {
-            console.log("Died!");
-            // document.querySelector('a-scene').reload();
-            location.reload();
-        }
+    update: function () { },
+    tick: function () {
     },
-    remove: function() {},
-    pause: function() {},
-    play: function() {}
+    remove: function () { },
+    pause: function () { },
+    play: function () { }
 });
+
+function processCollision(collidedTarget) {
+    switch (collidedTarget) {
+        case "wall":
+            console.log("Wall Collided");
+            $('.wall').attr("material", "opacity: 0.5");
+            setTimeout(() => {
+                $('.wall').attr("material", "opacity: 0");
+            }, 2000)
+            break;
+        case "nasa":
+            break;
+        case "home":
+            break;
+    }
+}

@@ -20,6 +20,12 @@ $('body').keyup((e) => {
     }
 })
 
+document.getElementById("box")
+    .addEventListener("hitstart", (e) => {
+        console.log(e);
+        // location.reload();
+    });
+
 $('body').on("touchstart", (e) => {
     jumpInDirection();
 })

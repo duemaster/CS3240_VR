@@ -34,20 +34,20 @@
         <a-sky src="#space"></a-sky>
 
         <!-- Enclosing Box -->
-        <a-plane height="100" width="100" position="-3 22 -50" material="transparent: true; opacity: 0" static-body></a-plane>
-        <a-plane height="100" width="100" position="-3 22 50" material="transparent: true; opacity: 0" static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="-3 22 -50" color="red" material="opacity: 0" static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="-3 22 50" color="red" material="opacity: 0" static-body></a-plane>
 
-        <a-plane height="100" width="100" position="-3 -28 0" material="transparent: true; opacity: 0" rotation="-90 0 0" static-body></a-plane>
-        <a-plane height="100" width="100" position="-3 72 0" material="transparent: true; opacity: 0" rotation="-90 0 0"  static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="-3 -28 0" color="red" material="opacity: 0" rotation="-90 0 0" static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="-3 72 0" color="red" material="opacity: 0" rotation="-90 0 0" static-body></a-plane>
 
-        <a-plane height="100" width="100" position="47 22 0" material="transparent: true; opacity: 0" rotation="0 -90 0" static-body></a-plane>
-        <a-plane height="100" width="100" position="-53 22 0" material="transparent: true; opacity: 0" rotation="0 -90 0"  static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="47 22 0" color="red" material="opacity: 0" rotation="0 -90 0" static-body></a-plane>
+        <a-plane class="wall" height="100" width="100" position="-53 22 0" color="red" material="opacity: 0" rotation="0 -90 0" static-body></a-plane>
 
-        <a-box id="box" camera-follow position="0 3 20" material="transparent: true; opacity: 0" dynamic-body="shape: box; mass: 5"
-            aabb-collider="objects: #move">
+        <a-box life id="box" camera-follow position="0 3 20" material="transparent: true; opacity: 0" dynamic-body="shape: box; mass: 5"
+            aabb-collider="objects: .wall">
         </a-box>
 
-    
+
         <a-camera id="camera" position="0 0 0" user-height="1">
             <a-cursor color="white"></a-cursor>
             <a-entity gltf-model="#lhand" position="-0.276 -2.321 -2.245" scale="2 2 2" rotation="-41.367552808445446 167.8193381938181 7.276563998161455"></a-entity>
