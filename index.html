@@ -6,11 +6,14 @@
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.2/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-aabb-collider-component/dist/aframe-aabb-collider-component.min.js"></script>
 
-
     <script src="components/life-component.js"></script>
     <script src="components/gravity-component.js"></script>
     <script src="components/camera-follow-component.js"></script>
     <script src="components/air-resistance-component.js"></script>
+    <script src="components/timer-component.js"></script>
+
+    <script src="javascript/moment.js"></script>
+
     <link rel="stylesheet" type="text/css" href="styles/index.css"></link>
 </head>
 
@@ -44,10 +47,13 @@
             aabb-collider="objects: #move">
         </a-box>
 
+    
         <a-camera id="camera" position="0 0 0" user-height="1">
             <a-cursor color="white"></a-cursor>
             <a-entity gltf-model="#lhand" position="-0.276 -2.321 -2.245" scale="2 2 2" rotation="-41.367552808445446 167.8193381938181 7.276563998161455"></a-entity>
             <a-entity gltf-model="#rhand" position="0.727 -2.897 -0.185" scale="2 2 2" rotation="0 -154.2975342287307 0"></a-entity>
+
+            <a-text timer value="123" color="white" height="10" position="-1.2 0.67 -1"></a-text>
         </a-camera>
 
 
