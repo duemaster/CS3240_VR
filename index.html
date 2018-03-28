@@ -28,7 +28,10 @@
             <a-asset-item id="fighter_mat" src="assets/spaceship_2/SpaceShip.mtl"></a-asset-item>
             <a-asset-item id="lhand" src="assets/l_hand/scene.gltf"></a-asset-item>
             <a-asset-item id="rhand" src="assets/r_hand/scene.gltf"></a-asset-item>
+
             <img id="space" src="assets/space/space.jpg"></img>
+            <img id="lose" src="assets/lose.png"></img>
+            <img id="win" src="assets/win.png"></img>
         </a-assets>
 
         <a-sky src="#space"></a-sky>
@@ -53,13 +56,16 @@
             <a-entity gltf-model="#lhand" position="-0.1 -2.5 -2.245" scale="2 2 2" rotation="-41.367552808445446 167.8193381938181 7.276563998161455"></a-entity>
             <a-entity gltf-model="#rhand" position="0.3 -2.897 -0.185" scale="2 2 2" rotation="0 -154.2975342287307 0"></a-entity>
 
-            <a-text timer value="123" color="white" height="10" position="-0.65 0.67 -1"></a-text>
+            <a-text id="timer" timer value="123" color="white" height="10" position="-0.65 0.67 -1"></a-text>
+
+            <!-- <a-image id="lose" src="#lose" position="0 0 -1"></a-image> -->
+            <!-- <a-image id="win" src="#win" position="0 0 -1"></a-image> -->
         </a-camera>
 
 
 
         <!-- Nasa -->
-        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-4.97 2.83 4.339" scale="0.3 0.3 0.3" static-body="shape: box"
+        <a-entity  class="nasa" obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-4.97 2.83 4.339" scale="0.3 0.3 0.3" static-body="shape: box"
             id="Nasa Zone 1">
             <a-animation attribute="position" dur="5000" from="-4.97 2.83 4.339" to="0.591 0.957 4.339" repeat="indefinite" direction="alternate">
             </a-animation>
@@ -67,21 +73,21 @@
 
 
         <!--Nasa spaceship 1 starting position -->
-        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-4.078 0.883 3.424" scale="0.3 0.3 0.3" static-body="shape: box"
+        <a-entity class="nasa" obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-4.078 0.883 3.424" scale="0.3 0.3 0.3" static-body="shape: box"
             id=" 2nd Nasa Zone 1">
             <a-animation attribute="position" dur="5000" from="-4.078 0.883 3.424" to="1.177 2.851 3.424" repeat="indefinite" direction="alternate">
             </a-animation>
         </a-entity>
 
         <!--Nasa spaceship 2 starting position -->
-        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="1.616 3.167 -10.963" scale="0.3 0.3 0.3" static-body="shape: box"
+        <a-entity class="nasa" obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="1.616 3.167 -10.963" scale="0.3 0.3 0.3" static-body="shape: box"
             id="Nasa (Zone 2) Start">
             <a-animation attribute="position" dur="5000" from="1.616 3.167 -10.963" to="-3.863 0.371 -11.735" repeat="indefinite" direction="alternate">
             </a-animation>
         </a-entity>
 
         <!--Nasa spaceship 3 starting position -->
-        <a-entity obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-3.989 4.659 -12.867" scale="0.3 0.3 0.3" static-body="shape: box"
+        <a-entity class="nasa" obj-model="obj: #fighter_obj; mtl: #fighter_mat" position="-3.989 4.659 -12.867" scale="0.3 0.3 0.3" static-body="shape: box"
             id=" 2nd Nasa (Zone 2) Start">
             <a-animation attribute="position" dur="5000" from="-3.989 4.659 -12.867" to="3.316 1.305 -12.867" repeat="indefinite" direction="alternate">
             </a-animation>
@@ -93,7 +99,7 @@
 
 
         <a-sphere position="-0.331 4.49 -17.705" rotation="0.12 -90.47 0" scale="2 5 2" material="color:#bb6262" geometry="primitive:cone;segmentsHeight:5;thetaLength:180"
-            id="UFO"></a-sphere>
+            class="UFO" static-body></a-sphere>
 
         <!-- Planets -->
         <a-sphere static-body radius="5" air-resistance="range:3" gravity="range: 5" position="-10.015 3.042 -3.628" src="assets/Planet Textures/saturnmap.jpg"

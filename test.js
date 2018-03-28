@@ -1,3 +1,5 @@
+isGameOver = false;
+
 // switch to stereoscopic mode directly on page load, this needs to be after the a-scene loads.
 var scene = document.querySelector('a-scene');
 if (scene.hasLoaded) {
@@ -10,7 +12,7 @@ if (scene.hasLoaded) {
     });
 }
 
-var jumpInDirection = function() {
+var jumpInDirection = function () {
     let player = document.getElementById("box");
 
     //Get camera facing location
@@ -28,16 +30,24 @@ var jumpInDirection = function() {
 
 $('body').keyup((e) => {
     if (e.keyCode == 32) {
+        if (window.isGameOver) {
+            location.reload();
+            return;
+        }
         jumpInDirection();
     }
 })
 
-document.getElementById("box")
-    .addEventListener("hitstart", (e) => {
-        console.log(e);
-        // location.reload();
-    });
+// document.getElementById("box")
+//     .addEventListener("hitstart", (e) => {
+//         console.log(e);
+//         location.reload();
+//     });
 
 $('body').on("touchstart", (e) => {
+    if (window.isGameOver) {
+        location.reload();
+        return;
+    }
     jumpInDirection();
 })

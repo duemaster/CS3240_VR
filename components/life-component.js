@@ -17,7 +17,8 @@ AFRAME.registerComponent('life', {
     play: function () { }
 });
 
-function processCollision(collidedTarget) {
+function processCollision(collidedTarget, ref) {
+    console.log(collidedTarget);
     switch (collidedTarget) {
         case "wall":
             console.log("Wall Collided");
@@ -27,8 +28,21 @@ function processCollision(collidedTarget) {
             }, 2000)
             break;
         case "nasa":
+            console.log("Collided with NASA");
+            console.log("Collided with NASA");
+            console.log(window.isGameOver);
+            if (!window.isGameOver) {
+                $("#camera").append("<a-image src='#lose' position='0 0 -1'></a-image>");
+                window.isGameOver = true;
+            }
             break;
-        case "home":
+        case "UFO":
+        console.log("Collided with UFO");
+        console.log(window.isGameOver);
+        if (!window.isGameOver) {
+            $("#camera").append("<a-image src='#win' position='0 0 -1'></a-image>");
+            window.isGameOver = true;
+        }
             break;
     }
 }
