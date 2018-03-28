@@ -21,7 +21,7 @@ function processCollision(collidedTarget) {
     switch (collidedTarget) {
         case "wall":
             console.log("Wall Collided");
-            $('.wall').attr("material", "opacity: 0.5");
+            $('.wall').attr("material", "opacity: 0.2");
             setTimeout(() => {
                 $('.wall').attr("material", "opacity: 0");
             }, 2000)
