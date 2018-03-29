@@ -28,6 +28,7 @@
             <a-asset-item id="fighter_mat" src="assets/spaceship_2/SpaceShip.mtl"></a-asset-item>
             <a-asset-item id="lhand" src="assets/l_hand/scene.gltf"></a-asset-item>
             <a-asset-item id="rhand" src="assets/r_hand/scene.gltf"></a-asset-item>
+            <a-asset-item id="rocket" src="assets/rocket/scene.gltf"></a-asset-item>
 
             <img id="space" src="assets/space/space.jpg"></img>
             <img id="lose" src="assets/lose.png"></img>
@@ -98,8 +99,7 @@
         <!--UFO-->
 
 
-        <a-sphere position="-0.331 4.49 -17.705" rotation="0.12 -90.47 0" scale="2 5 2" material="color:#bb6262" geometry="primitive:cone;segmentsHeight:5;thetaLength:180"
-            class="UFO" static-body></a-sphere>
+        <a-entity gltf-model="#rocket" position="-0.331 4.49 -17.705" rotation="0.12 -90.47 0" class="UFO" static-body></a-entity>
 
         <!-- Planets -->
         <a-sphere static-body radius="5" air-resistance="range:3" gravity="range: 5" position="-10.015 3.042 -3.628" src="assets/Planet Textures/saturnmap.jpg"
