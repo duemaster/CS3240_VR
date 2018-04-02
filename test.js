@@ -18,7 +18,7 @@ var jumpInDirection = function () {
     //Get camera facing location
     let camera_direction = document.getElementById("camera").object3D.getWorldDirection();
 
-    let forceAmount = -15;
+    let forceAmount = -10;
 
     player.body.applyImpulse(
         /* impulse */
