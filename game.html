@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.0.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-aabb-collider-component/dist/aframe-aabb-collider-component.min.js"></script>
+
+    <script src="components/life-component.js"></script>
+    <script src="components/gravity-component.js"></script>
+    <script src="components/camera-follow-component.js"></script>
+    <script src="components/air-resistance-component.js"></script>
+    <script src="components/timer-component.js"></script>
+
+    <script src="javascript/moment.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/game.css"></link>
+</head>
+
+<body>
+
+    <a-scene physics="iterations: 50; friction: 500; restitution: 0; gravity: 0;">
+
+        <a-assets>
+            <a-asset-item id="asteroid" src="assets/rock/scene.gltf"></a-asset-item>
+
+            <a-asset-item id="fighter_obj" src="assets/spaceship_2/SpaceShip.obj"></a-asset-item>
+            <a-asset-item id="fighter_mat" src="assets/spaceship_2/SpaceShip.mtl"></a-asset-item>
+            <a-asset-item id="lhand" src="assets/l_hand/scene.gltf"></a-asset-item>
+            <a-asset-item id="rhand" src="assets/r_hand/scene.gltf"></a-asset-item>
+            <a-asset-item id="rocket" src="assets/rocket/scene.gltf"></a-asset-item>
+
+            <img id="space" src="assets/space/space.jpg"></img>
+            <img id="lose" src="assets/lose.png"></img>
+            <img id="win" src="assets/win.png"></img>
+        </a-assets>
+
+        <a-sky src="#space"></a-sky>
+
+        <!-- Enclosing Box -->
+        <a-plane class="wall" height="19" width="36" position="-1 1.5 -130" color="red" material="opacity:0" static-body></a-plane>
+        <a-plane class="wall" height="19" width="36" position="-1 1.5 21" color="red" material="opacity:0" static-body></a-plane>
+
+        <a-plane class="wall" height="290" width="36" position="-1 -8 -8" color="red" material="opacity:0" rotation="-90 0 0" static-body></a-plane>
+        <a-plane class="wall" height="290" width="36" position="-1 11 -8" color="red" material="opacity:0" rotation="-90 0 0" static-body></a-plane>
+
+        <a-plane class="wall" height="19" width="290" position="17 1.5 -8" color="red" material="opacity:0" rotation="0 -90 0" static-body></a-plane>
+        <a-plane class="wall" height="19" width="290" position="-19 1.5 -8" color="red" material="opacity:0" rotation="0 -90 0" static-body></a-plane>
+
+
+        <a-box life id="box" camera-follow position="0 3 20" material="transparent: true; opacity: 0" dynamic-body="shape: box; mass: 5" aabb-collider="objects: .wall">
+        </a-box>
+
+
+        <a-camera id="camera" position="0 0 0" user-height="1">
+            <a-cursor color="white"></a-cursor>
+            <a-entity gltf-model="#lhand" position="-0.1 -2.5 -2.245" scale="2 2 2" rotation="-41.367552808445446 167.8193381938181 7.276563998161455"></a-entity>
+            <a-entity gltf-model="#rhand" position="0.3 -2.897 -0.185" scale="2 2 2" rotation="0 -154.2975342287307 0"></a-entity>
+
+            <a-text id="timer" timer value="123" color="white" height="10" position="-0.65 0.67 -1"></a-text>
+
+            <!-- <a-image id="lose" src="#lose" position="0 0 -1"></a-image> -->
+            <!-- <a-image id="win" src="#win" position="0 0 -1"></a-image> -->
+        </a-camera>
+
+
+
+        <a-entity gltf-model="#rocket" position="2.358 0.591 -124" rotation="0.12 -90.47 0" scale="0.7 0.7 0.7" class="UFO" static-body></a-entity>
+
+        <!-- Planets -->
+        <a-sphere static-body radius="4.3" air-resistance="range:8; resistance:10" gravity="mass:3.9; range:8" position="-3.512 -0.556 -20.165" src="assets/Planet Textures/saturnmap.jpg" id="planet1"></a-sphere>
+
+        <a-sphere static-body radius="4.3" air-resistance="range:8; resistance:10" gravity="mass:4.1; range:7" position="6.7 5 9.819" src="assets/Planet Textures/saturnmap.jpg" id="planet1-2"></a-sphere>
+
+        <a-sphere static-body radius="3" air-resistance="range:8; resistance:10" gravity="mass:2.4; range:8" position="6.56 0.936 -45.246" src="assets/Planet Textures/marsmap1k.jpg" id="planet2"></a-sphere>
+        <a-sphere static-body radius="3" air-resistance="range:8; resistance:10" gravity="mass:2.5; range:8" position="-3.7 5.263 -65.022" src="assets/Planet Textures/marsmap1k.jpg" id="planet2-2"></a-sphere>
+        <a-sphere static-body radius="1.6" air-resistance="range:8; resistance:10" gravity="mass:1.7; range:8" position="5 -0.35 -85.104" src="assets/Planet Textures/jupitermap.jpg" id="planet3"></a-sphere>
+        <a-sphere static-body radius="1.6" air-resistance="range:8; resistance:10" gravity="mass:1.7; range:8" position="-1.8 3.941 -105.21" src="assets/Planet Textures/neptunemap.jpg" id="planet4"></a-sphere>
+
+
+        <!-- asteroids -->
+
+
+
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.809 1.25 -17.17"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.469 1.25 12.008"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-9.917 1.872 -22.218"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-9.75 1.872 9.134"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-8.102 1.872 12.603"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-10.621 1.872 4.623"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-12.399 0.205 13.302"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.82 0.681 12.396"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="2.474 0.681 8.651"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="3.672 2.761 -3.507"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-8.463 2.881 -17.466"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="7.859 1.12 9.555"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="10.882 0.182 11.653"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-13.072 0.902 8.657"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-9.88 -1.773 0.278"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="9.862 3.077 7.487"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="13.431 2.232 4.777"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="11.879 1.795 8.563"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="13.084 -0.822 12.984"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="9.471 2.232 4.426"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.604 2.232 -0.164"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="5.517 0.681 8.084"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="1.901 0.681 -17.102"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.665 1.366 7.714"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-10.682 -1.662 10.943"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-6.854 -4.23 9.43"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-11.461 -3.355 7.437"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-11.461 5.077 -8.253"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-7.129 -3.355 2.733"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="4.601 -3.355 5.154"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="6.709 -2.536 -18.2"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="13.47 -2.536 -7.937"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="13.47 5.645 -17.121"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.595 1.572 10.943"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="6.184 0.056 11.247"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="6.38 2.83 5.282"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-8.21 2.83 7.305"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="7.54 2.83 5.725"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-8.455 2.83 4.029"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-11.29 -1.859 -24.705"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-9.483 -1.859 -20.515"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-9.483 -4.607 -17.02"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-9.483 -3.909 -24.897"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-12.413 -3.859 -20.059"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-0.022 -3.859 -20.059"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="0.897 -2.78 -26.763"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-3.274 -4.198 -26.763"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="6.806 -3.678 -25.731"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-13.108 0.139 -29.79"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="6.877 6.579 -1.899"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="1.12 7.455 8.202"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="4.47 6.989 9.379"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="8.23 6.989 6.876"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="11.426 6.989 -4.399"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="12.778 8.427 0.592"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="12.778 8.427 -12.01"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="12.778 8.953 -19.973"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="7.535 7.817 -17.212"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="7.535 5.69 -11.794"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="0.015 5.69 -9.112"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="0.015 4.564 -4.644"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="9.053 8.837 3.855"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-2.676 8.517 -4.063"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="0.209 8.517 -10.56"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-8.123 9.432 -16.912"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-8.123 9.432 -27.88"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-4.809 8.648 -23.311"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-13.598 8.648 -24.548"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-13.598 8.648 8.674"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-11.192 6.774 6.143"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="2.526 8.517 -6.158"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-6.3 7.316 -0.12"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-9.263 7.316 -5.716"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-3.108 7.699 7.005"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-3.108 7.699 -31.038"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="0.029 7.699 -22.02"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-2.111 9.144 -17.989"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="2.278 9.144 -14.393"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.3 0.3 0.3" static-body="shape: box" position="-13.108 -2.6 -27.901"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-6.57 -1.64 5.98"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-3.424 1.31 5.976"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.642 1.786 5.98"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.881 0.599 5.98"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="5.723 0.599 -20.747"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.244 0.599 -16.387"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.821 0.599 2.106"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.456 0.599 -24.302"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.456 0.599 -29.478"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.59 1.684 0.383"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.013 1.102 1.644"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-5.38 1.996 2.596"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-12.319 0.094 3.494"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-2.746 3.183 0.956"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="6.637 3.222 1.454"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.999 2.518 -26.983"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-6.491 3.268 -5.316"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-11.401 8.137 -13.869"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-8.444 7.092 -21.208"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="5.291 -5.887 -4.797"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="8.606 -3.691 -4.728"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="7.555 -2.54 -7.198"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="7.191 -4.683 -2.348"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.837 -3.53 -2.348"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.156 -2.318 14.954"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.779 -0.999 14.954"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="11.842 0.965 -22.603"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-6.145 -0.63 -16.024"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-1.814 1.71 -8.029"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-7.797 1.542 -19.332"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-7.105 4.107 -28.358"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-7.876 -1.915 -26.895"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-11.103 -0.808 -33.813"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-1.106 0.359 -32.205"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="1.457 -0.63 -13.716"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="9.519 -3.364 2.31"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-2.961 -4.703 -1.327"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-4.835 -2.982 11.648"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-11.632 3.569 9.736"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="-10.548 2.749 -0.606"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="8.423 -0.63 12.842"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="0.037 -0.63 9.294"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="7.191 5.397 12.842"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.5 0.5 0.5" static-body="shape: box" position="6.216 8.903 -6.723"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-7.494 1.586 -11.31"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="12.251 6.206 7.746"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="11.544 6.206 3.301"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="10.423 7.589 12.512"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="9.406 4.881 11.804"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-9.42 1.586 -14.538"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.124 5.174 -22.348"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.592 1.586 -0.872"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.592 1.586 -3.382"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-7.887 2.097 -3.382"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="11.366 2.097 2.742"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="8.511 1.892 -1.205"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="12.791 0.584 -4.028"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="10.555 2.803 -1.967"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="0.759 1.915 -3.538"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.81 3.299 -12.193"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-10.645 -0.364 6.814"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-8.328 -1.346 -2.353"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-3.531 -5.764 -6.689"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-3.531 -2.966 5.085"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="11.368 -2.966 5.736"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="9.968 -2.427 8.126"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-6.792 4.232 -7.435"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-2.029 2.049 -26.173"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-3.609 2.156 -8.391"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.924 2.156 -10.071"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="1.114 2.156 -10.071"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="1.114 1.461 -7.668"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-4.144 1.952 -5.349"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.023 5.106 -23.924"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-7.326 2.569 -23.924"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-2.456 -3.438 -21.825"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.229 3.832 -21.825"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-13.187 3.832 -21.825"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="8.901 -0.034 -18.319"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="6.33 -3.511 -15.168"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="5.382 2.318 -19.252"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.408 2.569 -9.553"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.408 3.813 -28.851"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="12.916 2.524 -17.603"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="8.384 3.831 -21.887"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="13.585 2.011 -11.783"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="7.135 3.831 -5.197"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-1.346 0.599 -2.7"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-0.038 0.599 -29.914"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="2.444 0.599 -23.305"></a-entity>
+        <a-entity gltf-model="#asteroid" scale="0.2 0.2 0.2" static-body="shape: box" position="-6.668 0.599 -20.995"></a-entity>
+
+    </a-scene>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="game.js"></script>
+
+</body>
+
+</html>

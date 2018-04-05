@@ -5,14 +5,14 @@ var scene = document.querySelector('a-scene');
 if (scene.hasLoaded) {
     scene.enterVR();
 } else {
-    scene.addEventListener('loaded', function () {
-        setTimeout(function () {
+    scene.addEventListener('loaded', function() {
+        setTimeout(function() {
             scene.enterVR();
         }, 1000);
     });
 }
 
-var jumpInDirection = function () {
+var jumpInDirection = function() {
     let player = document.getElementById("box");
 
     //Get camera facing location
@@ -31,7 +31,8 @@ var jumpInDirection = function () {
 $('body').keyup((e) => {
     if (e.keyCode == 32) {
         if (window.isGameOver) {
-            location.reload();
+            //location.reload();
+            window.location = "/";
             return;
         }
         /*new Audio('assets/jet.mp3').play();*/
