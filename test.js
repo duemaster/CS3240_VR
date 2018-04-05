@@ -34,8 +34,8 @@ $('body').keyup((e) => {
             location.reload();
             return;
         }
-        new Audio('assets/jet.mp3').play();
-        jumpInDirection();
+        /*new Audio('assets/jet.mp3').play();
+        jumpInDirection();*/
     }
 })
 
