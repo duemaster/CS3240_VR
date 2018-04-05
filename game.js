@@ -48,7 +48,8 @@ $('body').keyup((e) => {
 
 $('body').on("touchstart", (e) => {
     if (window.isGameOver) {
-        location.reload();
+        //location.reload();
+        window.location = "/";
         return;
     }
     jumpInDirection();
