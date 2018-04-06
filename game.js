@@ -32,7 +32,7 @@ $('body').keyup((e) => {
     if (e.keyCode == 32) {
         if (window.isGameOver) {
             //location.reload();
-            window.location = "/";
+            window.location = "/CS3240_VR";
             return;
         }
         /*new Audio('assets/jet.mp3').play();*/
