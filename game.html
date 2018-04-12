@@ -29,6 +29,7 @@
             <a-asset-item id="lhand" src="assets/l_hand/scene.gltf"></a-asset-item>
             <a-asset-item id="rhand" src="assets/r_hand/scene.gltf"></a-asset-item>
             <a-asset-item id="rocket" src="assets/rocket/scene.gltf"></a-asset-item>
+            <audio id="music" src="assets/sound/bensound-newdawn.mp3"></audio>
 
             <img id="space" src="assets/space/space.jpg"></img>
             <img id="lose" src="assets/lose.png"></img>
@@ -36,7 +37,7 @@
         </a-assets>
 
         <a-sky src="#space"></a-sky>
-         <a-sound src="assets/sound/bensound-newdawn.mp3" autoplay="true" loop="true" position="0 2 5"></a-sound>
+         <a-sound src="#music" autoplay="true" loop="true" position="0 2 5"></a-sound>
 
         <!-- Enclosing Box -->
         <a-plane class="wall" height="19" width="36" position="-1 1.5 -130" color="red" material="opacity:0" static-body></a-plane>
@@ -70,12 +71,12 @@
 
         <!-- Planets -->
 
-        <a-sphere static-body radius="1.6" air-resistance="range:5; resistance:10" gravity="mass:1.7; range:5" position="6.7 5 9.819" src="assets/Planet Textures/neptunemap.jpg" id="planet4"></a-sphere>
-        <a-sphere static-body radius="3" air-resistance="range:5; resistance:10" gravity="mass:2.5; range:5" position="-3.512 -0.556 -20.165" src="assets/Planet Textures/marsmap1k.jpg" id="planet2-2"></a-sphere>
-        <a-sphere static-body radius="4.3" air-resistance="range:5; resistance:10" gravity="mass:4.1; range:5" position="6.56 0.936 -45.246" src="assets/Planet Textures/saturnmap.jpg" id="planet1-2"></a-sphere>
-        <a-sphere static-body radius="4.3" air-resistance="range:5; resistance:10" gravity="mass:3.9; range:5" position="-3.7 5.263 -65.022" src="assets/Planet Textures/saturnmap.jpg" id="planet1"></a-sphere>
-        <a-sphere static-body radius="3" air-resistance="range:5; resistance:10" gravity="mass:2.5; range:5" position="5 -0.35 -85.104" src="assets/Planet Textures/marsmap1k.jpg" id="planet2-2"></a-sphere>
-        <a-sphere static-body radius="1.6" air-resistance="range:5; resistance:10" gravity="mass:1.7; range:5" position="-1.8 3.941 -105.21" src="assets/Planet Textures/neptunemap.jpg" id="planet4"></a-sphere>
+        <a-sphere static-body radius="1.6" air-resistance="range:6; resistance:10" gravity="mass:1.7; range:6" position="6.7 5 9.819" src="assets/Planet Textures/neptunemap.jpg" id="planet4"></a-sphere>
+        <a-sphere static-body radius="3" air-resistance="range:6; resistance:10" gravity="mass:2.5; range:6" position="-3.512 -0.556 -20.165" src="assets/Planet Textures/marsmap1k.jpg" id="planet2-2"></a-sphere>
+        <a-sphere static-body radius="4.3" air-resistance="range:6; resistance:10" gravity="mass:4.1; range:6" position="6.56 0.936 -45.246" src="assets/Planet Textures/saturnmap.jpg" id="planet1-2"></a-sphere>
+        <a-sphere static-body radius="4.3" air-resistance="range:6; resistance:10" gravity="mass:3.9; range:6" position="-3.7 5.263 -65.022" src="assets/Planet Textures/saturnmap.jpg" id="planet1"></a-sphere>
+        <a-sphere static-body radius="3" air-resistance="range:6; resistance:10" gravity="mass:2.5; range:6" position="5 -0.35 -85.104" src="assets/Planet Textures/marsmap1k.jpg" id="planet2-2"></a-sphere>
+        <a-sphere static-body radius="1.6" air-resistance="range:6; resistance:10" gravity="mass:1.7; range:6" position="-1.8 3.941 -105.21" src="assets/Planet Textures/neptunemap.jpg" id="planet4"></a-sphere>
 
 
         <!-- asteroids -->
